@@ -91,7 +91,7 @@ namespace NotesReminder
 
             foreach (Note note in notes){
                 if (note.IsToRemove == false){
-                    text = note.Controls[0].Controls[1].Text;
+                    text = note.Controls.Find("richTextBoxNote", true)[0].Text;
                     w = note.Width; h = note.Height; t = note.Top; l = note.Left;
                     dataToSave += text + ";" + w + "," + h + "," + t + "," + l + ";" + note.Id;
                     dataToSave += "\n";

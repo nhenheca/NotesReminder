@@ -43,10 +43,11 @@
             this.panel1.Controls.Add(this.richTextBoxNote);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.panel1.Location = new System.Drawing.Point(0, 0);
+            this.panel1.Location = new System.Drawing.Point(2, 2);
+            this.panel1.Margin = new System.Windows.Forms.Padding(0);
             this.panel1.Name = "panel1";
             this.panel1.Padding = new System.Windows.Forms.Padding(10, 45, 10, 10);
-            this.panel1.Size = new System.Drawing.Size(298, 245);
+            this.panel1.Size = new System.Drawing.Size(294, 241);
             this.panel1.TabIndex = 0;
             this.panel1.MouseDown += new System.Windows.Forms.MouseEventHandler(this.SizerMouseDown);
             this.panel1.MouseMove += new System.Windows.Forms.MouseEventHandler(this.SizerMouseMove);
@@ -61,7 +62,7 @@
             this.richTextBoxNote.Location = new System.Drawing.Point(10, 45);
             this.richTextBoxNote.Name = "richTextBoxNote";
             this.richTextBoxNote.ScrollBars = System.Windows.Forms.RichTextBoxScrollBars.Vertical;
-            this.richTextBoxNote.Size = new System.Drawing.Size(278, 190);
+            this.richTextBoxNote.Size = new System.Drawing.Size(274, 186);
             this.richTextBoxNote.TabIndex = 0;
             this.richTextBoxNote.Text = "";
             // 
@@ -73,7 +74,7 @@
             this.trash.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
             this.trash.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("trash.BackgroundImage")));
             this.trash.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.trash.Location = new System.Drawing.Point(254, -2);
+            this.trash.Location = new System.Drawing.Point(250, -2);
             this.trash.Name = "trash";
             this.trash.Size = new System.Drawing.Size(44, 38);
             this.trash.TabIndex = 1;
@@ -84,9 +85,9 @@
             this.panel2.BackColor = System.Drawing.Color.Khaki;
             this.panel2.Controls.Add(this.trash);
             this.panel2.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panel2.Location = new System.Drawing.Point(0, 0);
+            this.panel2.Location = new System.Drawing.Point(2, 2);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(298, 34);
+            this.panel2.Size = new System.Drawing.Size(294, 34);
             this.panel2.TabIndex = 2;
             this.panel2.MouseDown += new System.Windows.Forms.MouseEventHandler(this.Form1_MouseDown);
             // 
@@ -97,17 +98,22 @@
             this.AutoScroll = true;
             this.AutoSize = true;
             this.BackColor = System.Drawing.Color.LemonChiffon;
+            this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
+            this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ClientSize = new System.Drawing.Size(298, 245);
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.panel1);
+            this.DoubleBuffered = true;
             this.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "Note";
+            this.Padding = new System.Windows.Forms.Padding(2);
             this.ShowInTaskbar = false;
             this.Text = "Note";
+            this.TransparencyKey = System.Drawing.Color.White;
             this.MouseDown += new System.Windows.Forms.MouseEventHandler(this.SizerMouseDown);
             this.MouseMove += new System.Windows.Forms.MouseEventHandler(this.SizerMouseMove);
             this.MouseUp += new System.Windows.Forms.MouseEventHandler(this.SizerMouseUp);
