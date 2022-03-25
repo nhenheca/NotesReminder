@@ -44,8 +44,9 @@ namespace NotesReminder
             DateTime date = DateTime.Now;
             Note note = new Note();
             note.Id = date.ToString();
-            var panel = note.Controls[0];
-            var box = panel.Controls[1];
+            
+            var box = note.Controls.Find("richTextBoxNote", true)[0];
+            
             var text = ""; var w = "0"; var h = "0"; var t = "0"; var l = "0";
             note.StartPosition = FormStartPosition.Manual;
             note.monthCalendar = monthCalendarDate;
