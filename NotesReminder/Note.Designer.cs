@@ -39,6 +39,7 @@
             // 
             // panel1
             // 
+            this.panel1.AutoSize = true;
             this.panel1.Controls.Add(this.richTextBoxNote);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
@@ -47,6 +48,9 @@
             this.panel1.Padding = new System.Windows.Forms.Padding(10, 45, 10, 10);
             this.panel1.Size = new System.Drawing.Size(298, 245);
             this.panel1.TabIndex = 0;
+            this.panel1.MouseDown += new System.Windows.Forms.MouseEventHandler(this.SizerMouseDown);
+            this.panel1.MouseMove += new System.Windows.Forms.MouseEventHandler(this.SizerMouseMove);
+            this.panel1.MouseUp += new System.Windows.Forms.MouseEventHandler(this.SizerMouseUp);
             // 
             // richTextBoxNote
             // 
@@ -104,10 +108,14 @@
             this.Name = "Note";
             this.ShowInTaskbar = false;
             this.Text = "Note";
+            this.MouseDown += new System.Windows.Forms.MouseEventHandler(this.SizerMouseDown);
+            this.MouseMove += new System.Windows.Forms.MouseEventHandler(this.SizerMouseMove);
+            this.MouseUp += new System.Windows.Forms.MouseEventHandler(this.SizerMouseUp);
             this.panel1.ResumeLayout(false);
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
