@@ -1,0 +1,17 @@
+D:\APPS\NotesReminder\NotesReminder\NotesReminder\bin\Debug\net6.0-windows\NotesReminder.exe
+D:\APPS\NotesReminder\NotesReminder\NotesReminder\bin\Debug\net6.0-windows\NotesReminder.deps.json
+D:\APPS\NotesReminder\NotesReminder\NotesReminder\bin\Debug\net6.0-windows\NotesReminder.runtimeconfig.json
+D:\APPS\NotesReminder\NotesReminder\NotesReminder\bin\Debug\net6.0-windows\NotesReminder.dll
+D:\APPS\NotesReminder\NotesReminder\NotesReminder\bin\Debug\net6.0-windows\ref\NotesReminder.dll
+D:\APPS\NotesReminder\NotesReminder\NotesReminder\bin\Debug\net6.0-windows\NotesReminder.pdb
+D:\APPS\NotesReminder\NotesReminder\NotesReminder\obj\Debug\net6.0-windows\NotesReminder.csproj.AssemblyReference.cache
+D:\APPS\NotesReminder\NotesReminder\NotesReminder\obj\Debug\net6.0-windows\NotesReminder.Form1.resources
+D:\APPS\NotesReminder\NotesReminder\NotesReminder\obj\Debug\net6.0-windows\NotesReminder.csproj.GenerateResource.cache
+D:\APPS\NotesReminder\NotesReminder\NotesReminder\obj\Debug\net6.0-windows\NotesReminder.GeneratedMSBuildEditorConfig.editorconfig
+D:\APPS\NotesReminder\NotesReminder\NotesReminder\obj\Debug\net6.0-windows\NotesReminder.AssemblyInfoInputs.cache
+D:\APPS\NotesReminder\NotesReminder\NotesReminder\obj\Debug\net6.0-windows\NotesReminder.AssemblyInfo.cs
+D:\APPS\NotesReminder\NotesReminder\NotesReminder\obj\Debug\net6.0-windows\NotesReminder.csproj.CoreCompileInputs.cache
+D:\APPS\NotesReminder\NotesReminder\NotesReminder\obj\Debug\net6.0-windows\NotesReminder.dll
+D:\APPS\NotesReminder\NotesReminder\NotesReminder\obj\Debug\net6.0-windows\ref\NotesReminder.dll
+D:\APPS\NotesReminder\NotesReminder\NotesReminder\obj\Debug\net6.0-windows\NotesReminder.pdb
+D:\APPS\NotesReminder\NotesReminder\NotesReminder\obj\Debug\net6.0-windows\NotesReminder.genruntimeconfig.cache
