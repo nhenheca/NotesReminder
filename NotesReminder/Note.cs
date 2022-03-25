@@ -14,10 +14,12 @@ namespace NotesReminder
     {
         public MonthCalendar monthCalendar;
         public string Id;
+        public bool IsToRemove;
         public Note()
         {
             InitializeComponent();
             monthCalendar = new MonthCalendar();
+            IsToRemove = false;
             this.FormClosing += new FormClosingEventHandler(form_close);
             // ActiveForm will give you access to the current opened/activated Form1 instance
         }
@@ -47,8 +49,8 @@ namespace NotesReminder
             string[] arrLine = File.ReadAllLines(@"C:\NotesReminderData\Data.txt");
             arrLine[count - 1] = "";
             File.WriteAllLines(@"C:\NotesReminderData\Data.txt", arrLine);
-
-            
+            this.IsToRemove = true;
+            this.Close();
         }
     }
 }

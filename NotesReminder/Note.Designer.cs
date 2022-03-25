@@ -42,7 +42,7 @@
             this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel1.Location = new System.Drawing.Point(0, 0);
             this.panel1.Name = "panel1";
-            this.panel1.Padding = new System.Windows.Forms.Padding(10);
+            this.panel1.Padding = new System.Windows.Forms.Padding(10, 10, 10, 30);
             this.panel1.Size = new System.Drawing.Size(234, 161);
             this.panel1.TabIndex = 0;
             // 
@@ -51,11 +51,12 @@
             this.trash.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.trash.AutoScroll = true;
             this.trash.AutoSize = true;
+            this.trash.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
             this.trash.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("trash.BackgroundImage")));
             this.trash.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.trash.Location = new System.Drawing.Point(187, 123);
+            this.trash.Location = new System.Drawing.Point(185, 126);
             this.trash.Name = "trash";
-            this.trash.Size = new System.Drawing.Size(47, 38);
+            this.trash.Size = new System.Drawing.Size(44, 38);
             this.trash.TabIndex = 1;
             this.trash.DoubleClick += new System.EventHandler(this.trash_DoubleClick);
             // 
@@ -64,22 +65,28 @@
             this.richTextBoxNote.BackColor = System.Drawing.Color.LemonChiffon;
             this.richTextBoxNote.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.richTextBoxNote.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.richTextBoxNote.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.richTextBoxNote.Location = new System.Drawing.Point(10, 10);
             this.richTextBoxNote.Name = "richTextBoxNote";
-            this.richTextBoxNote.Size = new System.Drawing.Size(214, 141);
+            this.richTextBoxNote.Size = new System.Drawing.Size(214, 121);
             this.richTextBoxNote.TabIndex = 0;
             this.richTextBoxNote.Text = "";
             // 
             // Note
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.AutoScroll = true;
+            this.AutoSize = true;
             this.BackColor = System.Drawing.Color.LemonChiffon;
             this.ClientSize = new System.Drawing.Size(234, 161);
             this.Controls.Add(this.panel1);
+            this.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "Note";
+            this.ShowInTaskbar = false;
             this.Text = "Note";
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();

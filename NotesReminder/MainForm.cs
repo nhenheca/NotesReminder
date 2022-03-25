@@ -20,7 +20,8 @@ namespace NotesReminder
             {
                 foreach (string line in System.IO.File.ReadLines(@"C:\NotesReminderData\Data.txt"))
                 {
-                    createNoteFromFile(line);
+                    if(!line.Equals(""))
+                        createNoteFromFile(line);
                 }
             }
         }
@@ -88,10 +89,12 @@ namespace NotesReminder
             var text=""; var w=0; var h=0; var t = 0; var l = 0;
 
             foreach (Note note in notes){
-                text = note.Controls[0].Controls[1].Text;
-                w = note.Width; h = note.Height; t = note.Top; l = note.Left;
-                dataToSave += text + ";" + w + "," + h + "," + t + "," + l + ";" + note.Id;
-                dataToSave += "\n";
+                if (note.IsToRemove == false){
+                    text = note.Controls[0].Controls[1].Text;
+                    w = note.Width; h = note.Height; t = note.Top; l = note.Left;
+                    dataToSave += text + ";" + w + "," + h + "," + t + "," + l + ";" + note.Id;
+                    dataToSave += "\n";
+                }
             }
             saveDataTotal(dataToSave);
         }
