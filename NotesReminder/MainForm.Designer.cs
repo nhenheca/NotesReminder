@@ -33,9 +33,9 @@
             this.buttonAdd = new System.Windows.Forms.Button();
             this.richTextBoxContent = new System.Windows.Forms.RichTextBox();
             this.label2 = new System.Windows.Forms.Label();
-            this.monthCalendarDate = new System.Windows.Forms.MonthCalendar();
             this.button1 = new System.Windows.Forms.Button();
             this.notifyIcon1 = new System.Windows.Forms.NotifyIcon(this.components);
+            this.dateTimePickerMain = new System.Windows.Forms.DateTimePicker();
             this.SuspendLayout();
             // 
             // buttonAdd
@@ -67,15 +67,9 @@
             this.label2.TabIndex = 6;
             this.label2.Text = "Conteudo \r\nda Nota";
             // 
-            // monthCalendarDate
-            // 
-            this.monthCalendarDate.Location = new System.Drawing.Point(90, 187);
-            this.monthCalendarDate.Name = "monthCalendarDate";
-            this.monthCalendarDate.TabIndex = 7;
-            // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(7, 308);
+            this.button1.Location = new System.Drawing.Point(7, 163);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(75, 41);
             this.button1.TabIndex = 8;
@@ -92,17 +86,24 @@
             this.notifyIcon1.Text = "NoteReminder";
             this.notifyIcon1.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.notifyIcon1_MouseDoubleClick);
             // 
-            // Form1
+            // dateTimePickerMain
+            // 
+            this.dateTimePickerMain.Location = new System.Drawing.Point(90, 181);
+            this.dateTimePickerMain.Name = "dateTimePickerMain";
+            this.dateTimePickerMain.Size = new System.Drawing.Size(227, 23);
+            this.dateTimePickerMain.TabIndex = 9;
+            // 
+            // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(327, 357);
+            this.ClientSize = new System.Drawing.Size(327, 213);
+            this.Controls.Add(this.dateTimePickerMain);
             this.Controls.Add(this.button1);
-            this.Controls.Add(this.monthCalendarDate);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.richTextBoxContent);
             this.Controls.Add(this.buttonAdd);
-            this.Name = "Form1";
+            this.Name = "MainForm";
             this.Text = "NoteReminder";
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -114,8 +115,8 @@
         private Button buttonAdd;
         private RichTextBox richTextBoxContent;
         private Label label2;
-        private MonthCalendar monthCalendarDate;
         private Button button1;
         private NotifyIcon notifyIcon1;
+        private DateTimePicker dateTimePickerMain;
     }
 }

@@ -19,7 +19,8 @@ namespace NotesReminder
 
         public string Id;
         public bool IsToRemove;
-        public MonthCalendar monthCalendar;
+        public DateTimePicker dateTimePicker;
+        public MainForm dad;
 
         public Note()
         {
@@ -27,7 +28,7 @@ namespace NotesReminder
             //EVENT
             this.FormClosing += new FormClosingEventHandler(form_close);
             //INI
-            monthCalendar = new MonthCalendar();
+            dateTimePicker = new DateTimePicker();
             IsToRemove = false;
         }
         //ESCODER/MINIMIZAR
@@ -36,6 +37,12 @@ namespace NotesReminder
             Form form = (Form)sender;
             form.Hide();
             e.Cancel = true;
+        }
+        private void form_close(object sender, EventArgs e)
+        {
+            Panel panel = (Panel)sender;
+            var note = panel.Parent.Parent;
+            note.Hide();
         }
 
         //APAGAR
@@ -94,6 +101,11 @@ namespace NotesReminder
         }
         void SizerMouseUp(object sender, MouseEventArgs e){
             mov = false;
+        }
+
+        private void panel4_Click(object sender, EventArgs e)
+        {
+            this.dad.createNote("");
         }
     }
 }

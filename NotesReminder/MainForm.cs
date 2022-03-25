@@ -12,6 +12,7 @@ namespace NotesReminder
             initializeNotes();
             this.Resize += new EventHandler(Form1_Resize);
             this.FormClosing += new FormClosingEventHandler(form_close);
+            
         }
 
         private void initializeNotes()
@@ -39,19 +40,22 @@ namespace NotesReminder
         {
             createNote(data);
         }
-        private void createNote(string data)
+        public void createNote(string data)
         {
             DateTime date = DateTime.Now;
             Note note = new Note();
             note.Id = date.ToString();
+            note.dad = this;
             
             var box = note.Controls.Find("richTextBoxNote", true)[0];
             
             var text = ""; var w = "0"; var h = "0"; var t = "0"; var l = "0";
             note.StartPosition = FormStartPosition.Manual;
-            note.monthCalendar = monthCalendarDate;
+            note.dateTimePicker = dateTimePickerMain;
 
-            if (data.Equals(" ")) {
+            if (data.Equals("")) {
+                box.Text = "";
+            }else if (data.Equals(" ")) {
                 box.Text = richTextBoxContent.Text;
             }else{
                 note.Id = data.Split(";")[2];
