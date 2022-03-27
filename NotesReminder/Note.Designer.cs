@@ -33,19 +33,19 @@
             this.richTextBoxNote = new System.Windows.Forms.RichTextBox();
             this.trash = new System.Windows.Forms.Panel();
             this.titlebarPanel = new System.Windows.Forms.Panel();
+            this.dateHover = new System.Windows.Forms.Panel();
+            this.date = new System.Windows.Forms.Panel();
+            this.plusHover = new System.Windows.Forms.Panel();
+            this.plus = new System.Windows.Forms.Panel();
             this.trashHover = new System.Windows.Forms.Panel();
             this.closeHover = new System.Windows.Forms.Panel();
             this.close = new System.Windows.Forms.Panel();
-            this.plus = new System.Windows.Forms.Panel();
-            this.date = new System.Windows.Forms.Panel();
-            this.plusHover = new System.Windows.Forms.Panel();
-            this.dateHover = new System.Windows.Forms.Panel();
             this.divPanel.SuspendLayout();
             this.titlebarPanel.SuspendLayout();
+            this.dateHover.SuspendLayout();
+            this.plusHover.SuspendLayout();
             this.trashHover.SuspendLayout();
             this.closeHover.SuspendLayout();
-            this.plusHover.SuspendLayout();
-            this.dateHover.SuspendLayout();
             this.SuspendLayout();
             // 
             // divPanel
@@ -107,8 +107,55 @@
             this.titlebarPanel.TabIndex = 2;
             this.titlebarPanel.MouseDown += new System.Windows.Forms.MouseEventHandler(this.Form1_MouseDown);
             // 
+            // dateHover
+            // 
+            this.dateHover.Controls.Add(this.date);
+            this.dateHover.Location = new System.Drawing.Point(31, 0);
+            this.dateHover.Name = "dateHover";
+            this.dateHover.Size = new System.Drawing.Size(30, 30);
+            this.dateHover.TabIndex = 8;
+            this.dateHover.MouseEnter += new System.EventHandler(this.dateHover_MouseEnter);
+            this.dateHover.MouseLeave += new System.EventHandler(this.dateHover_MouseLeave);
+            // 
+            // date
+            // 
+            this.date.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("date.BackgroundImage")));
+            this.date.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.date.Location = new System.Drawing.Point(5, 5);
+            this.date.Name = "date";
+            this.date.Size = new System.Drawing.Size(20, 20);
+            this.date.TabIndex = 4;
+            this.date.MouseEnter += new System.EventHandler(this.date_MouseEnter);
+            this.date.MouseLeave += new System.EventHandler(this.date_MouseLeave);
+            // 
+            // plusHover
+            // 
+            this.plusHover.Controls.Add(this.plus);
+            this.plusHover.Location = new System.Drawing.Point(0, 0);
+            this.plusHover.Name = "plusHover";
+            this.plusHover.Size = new System.Drawing.Size(30, 30);
+            this.plusHover.TabIndex = 7;
+            this.plusHover.MouseEnter += new System.EventHandler(this.plusHover_MouseEnter);
+            this.plusHover.MouseLeave += new System.EventHandler(this.plusHover_MouseLeave);
+            // 
+            // plus
+            // 
+            this.plus.AutoScroll = true;
+            this.plus.AutoSize = true;
+            this.plus.BackColor = System.Drawing.Color.Transparent;
+            this.plus.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("plus.BackgroundImage")));
+            this.plus.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.plus.Location = new System.Drawing.Point(5, 5);
+            this.plus.Name = "plus";
+            this.plus.Size = new System.Drawing.Size(20, 20);
+            this.plus.TabIndex = 3;
+            this.plus.Click += new System.EventHandler(this.panel4_Click);
+            this.plus.MouseEnter += new System.EventHandler(this.plus_MouseEnter);
+            this.plus.MouseLeave += new System.EventHandler(this.plus_MouseLeave);
+            // 
             // trashHover
             // 
+            this.trashHover.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.trashHover.Controls.Add(this.trash);
             this.trashHover.Location = new System.Drawing.Point(237, 0);
             this.trashHover.Name = "trashHover";
@@ -119,6 +166,7 @@
             // 
             // closeHover
             // 
+            this.closeHover.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.closeHover.Controls.Add(this.close);
             this.closeHover.Location = new System.Drawing.Point(268, 0);
             this.closeHover.Name = "closeHover";
@@ -146,52 +194,6 @@
             this.close.MouseEnter += new System.EventHandler(this.close_MouseEnter);
             this.close.MouseLeave += new System.EventHandler(this.close_MouseLeave);
             // 
-            // plus
-            // 
-            this.plus.AutoScroll = true;
-            this.plus.AutoSize = true;
-            this.plus.BackColor = System.Drawing.Color.Transparent;
-            this.plus.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("plus.BackgroundImage")));
-            this.plus.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.plus.Location = new System.Drawing.Point(5, 5);
-            this.plus.Name = "plus";
-            this.plus.Size = new System.Drawing.Size(20, 20);
-            this.plus.TabIndex = 3;
-            this.plus.Click += new System.EventHandler(this.panel4_Click);
-            this.plus.MouseEnter += new System.EventHandler(this.plus_MouseEnter);
-            this.plus.MouseLeave += new System.EventHandler(this.plus_MouseLeave);
-            // 
-            // date
-            // 
-            this.date.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("date.BackgroundImage")));
-            this.date.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.date.Location = new System.Drawing.Point(5, 5);
-            this.date.Name = "date";
-            this.date.Size = new System.Drawing.Size(20, 20);
-            this.date.TabIndex = 4;
-            this.date.MouseEnter += new System.EventHandler(this.date_MouseEnter);
-            this.date.MouseLeave += new System.EventHandler(this.date_MouseLeave);
-            // 
-            // plusHover
-            // 
-            this.plusHover.Controls.Add(this.plus);
-            this.plusHover.Location = new System.Drawing.Point(0, 0);
-            this.plusHover.Name = "plusHover";
-            this.plusHover.Size = new System.Drawing.Size(30, 30);
-            this.plusHover.TabIndex = 7;
-            this.plusHover.MouseEnter += new System.EventHandler(this.plusHover_MouseEnter);
-            this.plusHover.MouseLeave += new System.EventHandler(this.plusHover_MouseLeave);
-            // 
-            // dateHover
-            // 
-            this.dateHover.Controls.Add(this.date);
-            this.dateHover.Location = new System.Drawing.Point(31, 0);
-            this.dateHover.Name = "dateHover";
-            this.dateHover.Size = new System.Drawing.Size(30, 30);
-            this.dateHover.TabIndex = 8;
-            this.dateHover.MouseEnter += new System.EventHandler(this.dateHover_MouseEnter);
-            this.dateHover.MouseLeave += new System.EventHandler(this.dateHover_MouseLeave);
-            // 
             // Note
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -209,6 +211,7 @@
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
             this.MinimizeBox = false;
+            this.MinimumSize = new System.Drawing.Size(120, 0);
             this.Name = "Note";
             this.ShowInTaskbar = false;
             this.Text = "Note";
@@ -218,13 +221,13 @@
             this.MouseUp += new System.Windows.Forms.MouseEventHandler(this.SizerMouseUp);
             this.divPanel.ResumeLayout(false);
             this.titlebarPanel.ResumeLayout(false);
+            this.dateHover.ResumeLayout(false);
+            this.plusHover.ResumeLayout(false);
+            this.plusHover.PerformLayout();
             this.trashHover.ResumeLayout(false);
             this.trashHover.PerformLayout();
             this.closeHover.ResumeLayout(false);
             this.closeHover.PerformLayout();
-            this.plusHover.ResumeLayout(false);
-            this.plusHover.PerformLayout();
-            this.dateHover.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
