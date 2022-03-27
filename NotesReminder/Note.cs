@@ -107,5 +107,103 @@ namespace NotesReminder
         {
             this.dad.createNote("");
         }
+
+        //CSS
+        //close
+        private void close_MouseLeave(object sender, EventArgs e)
+        {
+            close.BackColor = Color.PaleGoldenrod;
+            closeHover.BackColor = Color.PaleGoldenrod;
+        }
+
+        private void close_MouseEnter(object sender, EventArgs e)
+        {
+            close.BackColor = Color.Transparent;
+            closeHover.BackColor = Color.FromArgb(32, 0, 0, 0);
+        }
+
+        private void closeHover_MouseEnter(object sender, EventArgs e)
+        {
+            close.BackColor = Color.Transparent;
+            closeHover.BackColor = Color.FromArgb(32, 0, 0, 0);
+        }
+
+        private void closeHover_MouseLeave(object sender, EventArgs e)
+        {
+            close.BackColor = Color.PaleGoldenrod;
+            closeHover.BackColor = Color.PaleGoldenrod;
+        }
+        //trash
+        private void trash_MouseEnter(object sender, EventArgs e)
+        {
+            trash.BackColor = Color.Transparent;
+            trashHover.BackColor = Color.FromArgb(32, 255, 0, 0);
+        }
+
+        private void trash_MouseLeave(object sender, EventArgs e)
+        {
+            trash.BackColor = Color.PaleGoldenrod;
+            trashHover.BackColor = Color.PaleGoldenrod;
+        }
+
+        private void trashHover_MouseEnter(object sender, EventArgs e)
+        {
+            trash.BackColor = Color.Transparent;
+            trashHover.BackColor = Color.FromArgb(32, 255, 0, 0);
+        }
+
+        private void trashHover_MouseLeave(object sender, EventArgs e)
+        {
+            trash.BackColor = Color.PaleGoldenrod;
+            trashHover.BackColor = Color.PaleGoldenrod;
+        }
+        //date
+        private void date_MouseEnter(object sender, EventArgs e)
+        {
+            date.BackColor = Color.Transparent;
+            dateHover.BackColor = Color.FromArgb(32, 0, 0, 0);
+        }
+
+        private void date_MouseLeave(object sender, EventArgs e)
+        {
+            date.BackColor = Color.PaleGoldenrod;
+            dateHover.BackColor = Color.PaleGoldenrod;
+        }
+
+        private void dateHover_MouseEnter(object sender, EventArgs e)
+        {
+            date.BackColor = Color.Transparent;
+            dateHover.BackColor = Color.FromArgb(32, 0, 0, 0);
+        }
+
+        private void dateHover_MouseLeave(object sender, EventArgs e)
+        {
+            date.BackColor = Color.PaleGoldenrod;
+            dateHover.BackColor = Color.PaleGoldenrod;
+        }
+        //plus
+        private void plusHover_MouseEnter(object sender, EventArgs e)
+        {
+            plus.BackColor = Color.Transparent;
+            plusHover.BackColor = Color.FromArgb(32, 0, 255, 0);
+        }
+
+        private void plusHover_MouseLeave(object sender, EventArgs e)
+        {
+            plus.BackColor = Color.PaleGoldenrod;
+            plusHover.BackColor = Color.PaleGoldenrod;
+        }
+
+        private void plus_MouseEnter(object sender, EventArgs e)
+        {
+            plus.BackColor = Color.Transparent;
+            plusHover.BackColor = Color.FromArgb(32, 0, 255, 0);
+        }
+
+        private void plus_MouseLeave(object sender, EventArgs e)
+        {
+            plus.BackColor = Color.PaleGoldenrod;
+            plusHover.BackColor = Color.PaleGoldenrod;
+        }
     }
 }
