@@ -76,6 +76,7 @@
             this.richTextBoxNote.Size = new System.Drawing.Size(278, 195);
             this.richTextBoxNote.TabIndex = 0;
             this.richTextBoxNote.Text = "";
+            this.richTextBoxNote.TextChanged += new System.EventHandler(this.richTextBoxNote_TextChanged);
             // 
             // trash
             // 
@@ -149,7 +150,7 @@
             this.plus.Name = "plus";
             this.plus.Size = new System.Drawing.Size(20, 20);
             this.plus.TabIndex = 3;
-            this.plus.Click += new System.EventHandler(this.panel4_Click);
+            this.plus.Click += new System.EventHandler(this.panelAdd_Click);
             this.plus.MouseEnter += new System.EventHandler(this.plus_MouseEnter);
             this.plus.MouseLeave += new System.EventHandler(this.plus_MouseLeave);
             // 

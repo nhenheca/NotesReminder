@@ -8,19 +8,19 @@
     "net6.0-windows7.0": []
   },
   "packageFolders": {
-    "C:\\Users\\Jéssica Fialho\\.nuget\\packages\\": {}
+    "C:\\Users\\mcpri\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\Jéssica Fialho\\Documents\\GitHub\\NotesReminder\\NotesReminder\\NotesReminder.csproj",
+      "projectUniqueName": "C:\\Users\\mcpri\\Documents\\GitHub\\NotesReminder\\NotesReminder\\NotesReminder.csproj",
       "projectName": "NotesReminder",
-      "projectPath": "C:\\Users\\Jéssica Fialho\\Documents\\GitHub\\NotesReminder\\NotesReminder\\NotesReminder.csproj",
-      "packagesPath": "C:\\Users\\Jéssica Fialho\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\Jéssica Fialho\\Documents\\GitHub\\NotesReminder\\NotesReminder\\obj\\",
+      "projectPath": "C:\\Users\\mcpri\\Documents\\GitHub\\NotesReminder\\NotesReminder\\NotesReminder.csproj",
+      "packagesPath": "C:\\Users\\mcpri\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\mcpri\\Documents\\GitHub\\NotesReminder\\NotesReminder\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "C:\\Users\\Jéssica Fialho\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\mcpri\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
@@ -63,7 +63,7 @@
             "privateAssets": "none"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.101\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.201\\RuntimeIdentifierGraph.json"
       }
     }
   }

@@ -10,9 +10,7 @@ namespace NotesReminder
             InitializeComponent();
             createFile();
             initializeNotes();
-            this.Resize += new EventHandler(Form1_Resize);
-            this.FormClosing += new FormClosingEventHandler(form_close);
-            
+            this.Resize += new EventHandler(Form1_Resize);   
         }
 
         private void initializeNotes()
@@ -26,15 +24,6 @@ namespace NotesReminder
                 }
             }
         }
-
-        //SAVEDATA
-        private static async Task saveDataTotal(string data)
-        {
-            //using StreamWriter file = new(@"C:\NotesReminderData\Data.txt", append: true);
-            //await file.WriteLineAsync(data);
-            await File.WriteAllTextAsync(@"C:\NotesReminderData\Data.txt", data);
-        }
-
         //CREATE 
         private void createNoteFromFile(string data)
         {
@@ -87,21 +76,6 @@ namespace NotesReminder
             foreach(Note note in notes){
                 note.Show();
             }
-        }
-        void form_close(object sender, FormClosingEventArgs e)
-        {
-            string dataToSave = "";
-            var text=""; var w=0; var h=0; var t = 0; var l = 0;
-
-            foreach (Note note in notes){
-                if (note.IsToRemove == false){
-                    text = note.Controls.Find("richTextBoxNote", true)[0].Text;
-                    w = note.Width; h = note.Height; t = note.Top; l = note.Left;
-                    dataToSave += text + ";" + w + "," + h + "," + t + "," + l + ";" + note.Id;
-                    dataToSave += "\n";
-                }
-            }
-            saveDataTotal(dataToSave);
         }
 
         //SYSTEM TRAY

@@ -12,8 +12,8 @@
       }
     ],
     "additionalProbingPaths": [
-      "C:\\Users\\Miguel Rodrigues\\.dotnet\\store\\|arch|\\|tfm|",
-      "C:\\Users\\Miguel Rodrigues\\.nuget\\packages"
+      "C:\\Users\\mcpri\\.dotnet\\store\\|arch|\\|tfm|",
+      "C:\\Users\\mcpri\\.nuget\\packages"
     ],
     "configProperties": {
       "System.Reflection.Metadata.MetadataUpdater.IsSupported": false,
