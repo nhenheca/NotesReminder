@@ -1,4 +1,5 @@
 using System.Text;
+using System.Text.Json;
 
 namespace NotesReminder
 {
@@ -17,59 +18,48 @@ namespace NotesReminder
         {
             if (File.Exists(@"C:\NotesReminderData\Data.txt"))
             {
-                foreach (string line in System.IO.File.ReadLines(@"C:\NotesReminderData\Data.txt"))
-                {
-                    if(!line.Equals(""))
-                        createNoteFromFile(line);
-                }
+                initializeJsonNote();
             }
         }
-        //CREATE 
-        private void createNoteFromFile(string data)
-        {
-            createNote(data);
-        }
-        public void createNote(string data)
+        //CREATE
+        public void createNote()
         {
             DateTime date = DateTime.Now;
             Note note = new Note();
             note.Id = date.ToString();
             note.dad = this;
-            
-            var box = note.Controls.Find("richTextBoxNote", true)[0];
-            
-            var text = ""; var w = "0"; var h = "0"; var t = "0"; var l = "0";
+ 
             note.StartPosition = FormStartPosition.Manual;
             note.dateTimePicker = dateTimePickerMain;
-
-            if (data.Equals("")) {
-                box.Text = "";
-            }else if (data.Equals(" ")) {
-                box.Text = richTextBoxContent.Text;
-            }else{
-                note.Id = data.Split(";")[2];
-                text = data.Split(";")[0];
-                var propreties = data.Split(";")[1];
-                w = propreties.Split(",")[0];
-                h = propreties.Split(",")[1];
-                t = propreties.Split(",")[2];
-                l = propreties.Split(",")[3];
-
-                box.Text = text;
-                note.Width = Int32.Parse(w);
-                note.Height = Int32.Parse(h);
-                note.Top = Int32.Parse(t);
-                note.Left = Int32.Parse(l);
-                note.Location = new Point(Int32.Parse(l), Int32.Parse(t));
-            }
                 
             notes.Add(note);
             note.Show();
         }
+        public void initializeJsonNote()
+        {
+            Note note = new Note();
+            note.StartPosition = FormStartPosition.Manual;
+            note.dad = this;
 
+            string path = @"C:\NotesReminderData\Data.txt";
+            string jsonString = File.ReadAllText(path);
+            NoteContent noteContent = JsonSerializer.Deserialize<NoteContent>(jsonString)!;
+
+            note.Id = $"{noteContent.id}";
+            note.Controls.Find("richTextBoxNote", true)[0].Text = $"{noteContent.text}";
+            note.Width = Int32.Parse($"{noteContent.width}");
+            note.Height = Int32.Parse($"{noteContent.height}");
+            note.Top = Int32.Parse($"{noteContent.top}");
+            note.Left = Int32.Parse($"{noteContent.left}");
+            note.Location = new Point(Int32.Parse($"{noteContent.left}"), 
+                Int32.Parse($"{noteContent.top}"));
+
+            notes.Add(note);
+            note.Show();
+        }
         //BUTTONS EVENTS
         private void buttonAdd_Click(object sender, EventArgs e){
-            createNote(" ");
+            createNote();
         }
         private void button1_Click(object sender, EventArgs e)
         {

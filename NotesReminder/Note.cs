@@ -5,13 +5,17 @@ using System.Data;
 using System.Drawing;
 using System.Linq;
 using System.Text;
+using System.Text.Json;
 using System.Threading.Tasks;
+using System.Timers;
 using System.Windows.Forms;
 
 namespace NotesReminder
 {
     public partial class Note : Form
     {
+        public System.Timers.Timer noteTimer; 
+        
         int Mx;int My;int Sw;int Sh;bool mov;
 
         private const int WM_NCLBUTTONDOWN = 0xA1;
@@ -31,20 +35,11 @@ namespace NotesReminder
             dateTimePicker = new DateTimePicker();
             IsToRemove = false;
         }
-        //ESCODER/MINIMIZAR
-        /*void form_close(object sender, FormClosingEventArgs e)
-        {
-            Form form = (Form)sender;
-            form.Hide();
-            e.Cancel = true;
-        }*/
+        
         private void form_close(object sender, EventArgs e)
         {
             Form currentForm = Form.ActiveForm;
             currentForm.Hide();
-            /*Panel panel = (Panel)sender;
-            var note = panel.Parent.Parent;
-            note.Hide();*/
         }
 
         //APAGAR
@@ -108,19 +103,32 @@ namespace NotesReminder
         //SAVE
         private void richTextBoxNote_TextChanged(object sender, EventArgs e)
         {
-            noteSave();
-        }
-        private async Task noteSave(){
-            string dataToSave = "";
-            var text = ""; var w = 0; var h = 0; var t = 0; var l = 0;
+            if (noteTimer != null) {
+                noteTimer.Stop();
+            }else{
+                noteTimer = new System.Timers.Timer();
+                noteTimer.Interval = 3000;
+            }
 
-            text = richTextBoxNote.Text;
-            w = this.Width; h = this.Height; t = this.Top; l = this.Left;
-            dataToSave += text + ";" + w + "," + h + "," + t + "," + l + ";" + this.Id;
+            noteSaveJson();
+            noteTimer.Start(); 
+        }
+
+        private async Task noteSaveJson()
+        {
+            NoteContent noteContent = new NoteContent();
+            noteContent.id = this.Id;
+            noteContent.text = richTextBoxNote.Text;
+            noteContent.width = this.Width;
+            noteContent.height = this.Height;
+            noteContent.top = this.Top;
+            noteContent.left = this.Left;
             
-            await File.WriteAllTextAsync(@"C:\NotesReminderData\Data.txt", dataToSave);
-        }
+            string path = @"C:\NotesReminderData\Data.txt";
+            string jsonString = JsonSerializer.Serialize(noteContent);
 
+            File.WriteAllText(path, jsonString);
+        }
 
         //CSS
         //close
@@ -213,7 +221,7 @@ namespace NotesReminder
         //EVENTS
         private void panelAdd_Click(object sender, EventArgs e)
         {
-            this.dad.createNote("");
+            this.dad.createNote();
         }
     }
 }
