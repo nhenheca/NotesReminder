@@ -15,20 +15,22 @@ namespace NotesReminder
             this.Resize += new EventHandler(Form1_Resize);   
         }
 
-        private void initializeListBox(){
-            ListBox listBoxNotes = new System.Windows.Forms.ListBox();
-            listBoxNotes.FormattingEnabled = true;
-            listBoxNotes.ItemHeight = 15;
-            listBoxNotes.Location = new System.Drawing.Point(12, 51);
-            listBoxNotes.Name = "listBoxNotes";
-            listBoxNotes.Size = new System.Drawing.Size(192, 289);
-            listBoxNotes.DataSource = notes;
-            listBoxNotes.DisplayMember = "Name";
+        public void initializeListBox(){
+            ListBox listBox = new ListBox();
 
-            this.Controls.Add(listBoxNotes);
+            listBox.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)| System.Windows.Forms.AnchorStyles.Left) | System.Windows.Forms.AnchorStyles.Right)));
+            listBox.FormattingEnabled = true;
+            listBox.ItemHeight = 15;
+            listBox.Location = new System.Drawing.Point(12, 55);
+            listBox.Name = "listBoxNotes";
+            listBox.Size = new System.Drawing.Size(192, 274);
+            listBox.DataSource = this.notes;
+            listBox.DisplayMember = "noteText";
+
+            this.Controls.Add(listBox);
         }
 
-        private void initializeNotes()
+        public void initializeNotes()
         {
             string[] files = Directory.GetFiles(@"C:\NotesReminderData", "*.json");
             foreach (var file in files){
@@ -48,13 +50,12 @@ namespace NotesReminder
             notes.Add(note);
             note.Show();
         }
-        public void initializeJsonNote(string path)
+        private void initializeJsonNote(string path)
         {
             if (File.ReadAllText(path).Equals("")) {
                 //vazio
             }else{
                 Note note = new Note();
-                NoteContent noteContent = new NoteContent();
 
                 note.StartPosition = FormStartPosition.Manual;
                 note.dad = this;

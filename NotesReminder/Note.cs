@@ -14,14 +14,15 @@ namespace NotesReminder
 {
     public partial class Note : Form
     {
-        public System.Timers.Timer noteTimer; 
-        
-        int Mx;int My;int Sw;int Sh;bool mov;
+        public System.Timers.Timer noteTimer;
+
+        int Mx; int My; int Sw; int Sh; bool mov;
 
         private const int WM_NCLBUTTONDOWN = 0xA1;
         private const int HT_CAPTION = 0x2;
 
         public string Id;
+
         public DateTimePicker dateTimePicker;
         public MainForm dad;
 
@@ -87,11 +88,13 @@ namespace NotesReminder
         //SAVE
         private void richTextBoxNote_TextChanged(object sender, EventArgs e)
         {
-            noteSaveJson(); 
+            noteSaveJson();
         }
 
         private async Task noteSaveJson()
         {
+            noteText = richTextBoxNote.Text;
+
             NoteContent noteContent = new NoteContent();
             noteContent.id = this.Id;
             noteContent.text = richTextBoxNote.Text;
@@ -213,5 +216,8 @@ namespace NotesReminder
         {
             noteSaveJson();
         }
+
+        //GET E SET
+        public string noteText { get; set; }
     }
 }

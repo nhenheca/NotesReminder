@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace NotesReminder
 {
-    internal class NoteContent{
+    public class NoteContent{
         public string id { get; set; }
         public string text { get; set; }
         public int width { get; set; }
