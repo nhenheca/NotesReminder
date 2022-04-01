@@ -16,10 +16,10 @@ namespace NotesReminder
 
         private void initializeNotes()
         {
-            if (File.Exists(@"C:\NotesReminderData\Data.txt"))
-            {
-                initializeJsonNote();
-            }
+            string[] files = Directory.GetFiles(@"C:\NotesReminderData", "*.json");
+            foreach (var file in files){
+                initializeJsonNote(file.ToString());
+            } 
         }
         //CREATE
         public void createNote()
@@ -35,27 +35,30 @@ namespace NotesReminder
             notes.Add(note);
             note.Show();
         }
-        public void initializeJsonNote()
+        public void initializeJsonNote(string path)
         {
-            Note note = new Note();
-            note.StartPosition = FormStartPosition.Manual;
-            note.dad = this;
+            if (File.ReadAllText(path).Equals("")) {
+                //vazio
+            }else{
+                Note note = new Note();
+                note.StartPosition = FormStartPosition.Manual;
+                note.dad = this;
 
-            string path = @"C:\NotesReminderData\Data.txt";
-            string jsonString = File.ReadAllText(path);
-            NoteContent noteContent = JsonSerializer.Deserialize<NoteContent>(jsonString)!;
+                string jsonString = File.ReadAllText(path);
+                NoteContent noteContent = JsonSerializer.Deserialize<NoteContent>(jsonString)!;
 
-            note.Id = $"{noteContent.id}";
-            note.Controls.Find("richTextBoxNote", true)[0].Text = $"{noteContent.text}";
-            note.Width = Int32.Parse($"{noteContent.width}");
-            note.Height = Int32.Parse($"{noteContent.height}");
-            note.Top = Int32.Parse($"{noteContent.top}");
-            note.Left = Int32.Parse($"{noteContent.left}");
-            note.Location = new Point(Int32.Parse($"{noteContent.left}"), 
-                Int32.Parse($"{noteContent.top}"));
+                note.Id = $"{noteContent.id}";
+                note.Controls.Find("richTextBoxNote", true)[0].Text = $"{noteContent.text}";
+                note.Width = Int32.Parse($"{noteContent.width}");
+                note.Height = Int32.Parse($"{noteContent.height}");
+                note.Top = Int32.Parse($"{noteContent.top}");
+                note.Left = Int32.Parse($"{noteContent.left}");
+                note.Location = new Point(Int32.Parse($"{noteContent.left}"),
+                    Int32.Parse($"{noteContent.top}"));
 
-            notes.Add(note);
-            note.Show();
+                notes.Add(note);
+                note.Show();
+            }            
         }
         //BUTTONS EVENTS
         private void buttonAdd_Click(object sender, EventArgs e){

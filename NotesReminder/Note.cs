@@ -22,7 +22,6 @@ namespace NotesReminder
         private const int HT_CAPTION = 0x2;
 
         public string Id;
-        public bool IsToRemove;
         public DateTimePicker dateTimePicker;
         public MainForm dad;
 
@@ -33,7 +32,6 @@ namespace NotesReminder
             this.FormClosing += new FormClosingEventHandler(form_close);
             //INI
             dateTimePicker = new DateTimePicker();
-            IsToRemove = false;
         }
         
         private void form_close(object sender, EventArgs e)
@@ -44,27 +42,13 @@ namespace NotesReminder
 
         //APAGAR
         private void trash_DoubleClick(object sender, EventArgs e){
-            var count = 0;
+            string fileToRemove = this.Id;
+            fileToRemove = fileToRemove.Replace("/", "");
+            fileToRemove = fileToRemove.Replace(":", "");
+            fileToRemove = fileToRemove.Replace(" ", "");
+            string path = @"C:\NotesReminderData\" + fileToRemove + ".json";
 
-            StreamReader sr = new StreamReader(@"C:\NotesReminderData\Data.txt");
-            string line = sr.ReadLine();
-            while (line != null)
-            {
-                count++;
-                if (line.Contains(this.Id))
-                {
-                    break;
-                }
-                line = sr.ReadLine();
-            }
-            sr.Close();
-
-            string[] arrLine = File.ReadAllLines(@"C:\NotesReminderData\Data.txt");
-            if (!((count - 1) < 0)) {
-                arrLine[count - 1] = "";
-                File.WriteAllLines(@"C:\NotesReminderData\Data.txt", arrLine);
-            }
-            this.IsToRemove = true;
+            File.Delete(path);
             this.Close();
         }
 
@@ -103,15 +87,14 @@ namespace NotesReminder
         //SAVE
         private void richTextBoxNote_TextChanged(object sender, EventArgs e)
         {
-            if (noteTimer != null) {
+            /*if (noteTimer != null) {
                 noteTimer.Stop();
             }else{
                 noteTimer = new System.Timers.Timer();
                 noteTimer.Interval = 3000;
-            }
-
+            }*/
             noteSaveJson();
-            noteTimer.Start(); 
+            //noteTimer.Start(); 
         }
 
         private async Task noteSaveJson()
@@ -124,10 +107,14 @@ namespace NotesReminder
             noteContent.top = this.Top;
             noteContent.left = this.Left;
             
-            string path = @"C:\NotesReminderData\Data.txt";
             string jsonString = JsonSerializer.Serialize(noteContent);
 
-            File.WriteAllText(path, jsonString);
+            var noteName = noteContent.id.Replace("/", "");
+            noteName = noteName.Replace(":", "");
+            noteName = noteName.Replace(" ", "");
+
+            string path = @"C:\NotesReminderData\"+ noteName + ".json";
+            File.WriteAllTextAsync(path, jsonString);
         }
 
         //CSS
