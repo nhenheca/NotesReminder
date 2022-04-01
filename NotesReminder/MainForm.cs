@@ -6,12 +6,26 @@ namespace NotesReminder
     public partial class MainForm : Form
     {
         public List<Note> notes = new List<Note>();
+        
         public MainForm()
         {
             InitializeComponent();
-            createFile();
             initializeNotes();
+            initializeListBox();
             this.Resize += new EventHandler(Form1_Resize);   
+        }
+
+        private void initializeListBox(){
+            ListBox listBoxNotes = new System.Windows.Forms.ListBox();
+            listBoxNotes.FormattingEnabled = true;
+            listBoxNotes.ItemHeight = 15;
+            listBoxNotes.Location = new System.Drawing.Point(12, 51);
+            listBoxNotes.Name = "listBoxNotes";
+            listBoxNotes.Size = new System.Drawing.Size(192, 289);
+            listBoxNotes.DataSource = notes;
+            listBoxNotes.DisplayMember = "Name";
+
+            this.Controls.Add(listBoxNotes);
         }
 
         private void initializeNotes()
@@ -30,7 +44,6 @@ namespace NotesReminder
             note.dad = this;
  
             note.StartPosition = FormStartPosition.Manual;
-            note.dateTimePicker = dateTimePickerMain;
                 
             notes.Add(note);
             note.Show();
@@ -41,6 +54,8 @@ namespace NotesReminder
                 //vazio
             }else{
                 Note note = new Note();
+                NoteContent noteContent = new NoteContent();
+
                 note.StartPosition = FormStartPosition.Manual;
                 note.dad = this;
 
@@ -87,38 +102,5 @@ namespace NotesReminder
             notifyIcon1.Visible = false;
         }
 
-        //FILE HANDLER
-        private void createFile()
-        {
-            string path = @"C:\NotesReminderData\Data.txt";
-            if (!File.Exists(path))
-            {
-                try
-                {
-                    // Create the file, or overwrite if the file exists.
-                    using (FileStream fs = File.Create(path))
-                    {
-                        byte[] info = new UTF8Encoding(true).GetBytes("");
-                        // Add some information to the file.
-                        fs.Write(info, 0, info.Length);
-                    }
-
-                    // Open the stream and read it back.
-                    /*using (StreamReader sr = File.OpenText(path))
-                    {
-                        string s = "";
-                        while ((s = sr.ReadLine()) != null)
-                        {
-                            Console.WriteLine(s);
-                        }
-                    }*/
-                }
-
-                catch (Exception ex)
-                {
-                    Console.WriteLine(ex.ToString());
-                }
-            }
-        }
     }
 }

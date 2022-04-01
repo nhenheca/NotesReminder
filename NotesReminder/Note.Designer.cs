@@ -217,6 +217,8 @@
             this.ShowInTaskbar = false;
             this.Text = "Note";
             this.TransparencyKey = System.Drawing.Color.White;
+            this.LocationChanged += new System.EventHandler(this.Note_LocationChanged);
+            this.SizeChanged += new System.EventHandler(this.Note_SizeChanged);
             this.MouseDown += new System.Windows.Forms.MouseEventHandler(this.SizerMouseDown);
             this.MouseMove += new System.Windows.Forms.MouseEventHandler(this.SizerMouseMove);
             this.MouseUp += new System.Windows.Forms.MouseEventHandler(this.SizerMouseUp);

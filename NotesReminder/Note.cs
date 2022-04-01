@@ -87,14 +87,7 @@ namespace NotesReminder
         //SAVE
         private void richTextBoxNote_TextChanged(object sender, EventArgs e)
         {
-            /*if (noteTimer != null) {
-                noteTimer.Stop();
-            }else{
-                noteTimer = new System.Timers.Timer();
-                noteTimer.Interval = 3000;
-            }*/
-            noteSaveJson();
-            //noteTimer.Start(); 
+            noteSaveJson(); 
         }
 
         private async Task noteSaveJson()
@@ -114,7 +107,7 @@ namespace NotesReminder
             noteName = noteName.Replace(" ", "");
 
             string path = @"C:\NotesReminderData\"+ noteName + ".json";
-            File.WriteAllTextAsync(path, jsonString);
+            File.WriteAllText(path, jsonString);
         }
 
         //CSS
@@ -209,6 +202,16 @@ namespace NotesReminder
         private void panelAdd_Click(object sender, EventArgs e)
         {
             this.dad.createNote();
+        }
+
+        private void Note_LocationChanged(object sender, EventArgs e)
+        {
+            noteSaveJson();
+        }
+
+        private void Note_SizeChanged(object sender, EventArgs e)
+        {
+            noteSaveJson();
         }
     }
 }
