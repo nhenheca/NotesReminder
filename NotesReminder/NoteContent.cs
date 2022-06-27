@@ -13,5 +13,7 @@ namespace NotesReminder
         public int height { get; set; }
         public int top { get; set; }
         public int left { get; set; }
+        public string date { get; set; }
+        public string initialDate { get; set; }
     }
 }

@@ -87,10 +87,11 @@
             this.trash.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("trash.BackgroundImage")));
             this.trash.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             this.trash.Location = new System.Drawing.Point(5, 5);
+            this.trash.Margin = new System.Windows.Forms.Padding(10);
             this.trash.Name = "trash";
             this.trash.Size = new System.Drawing.Size(20, 20);
             this.trash.TabIndex = 1;
-            this.trash.DoubleClick += new System.EventHandler(this.trash_DoubleClick);
+            this.trash.Click += new System.EventHandler(this.trash_Click);
             this.trash.MouseEnter += new System.EventHandler(this.trash_MouseEnter);
             this.trash.MouseLeave += new System.EventHandler(this.trash_MouseLeave);
             // 
@@ -126,6 +127,7 @@
             this.date.Name = "date";
             this.date.Size = new System.Drawing.Size(20, 20);
             this.date.TabIndex = 4;
+            this.date.Click += new System.EventHandler(this.date_Click);
             this.date.MouseEnter += new System.EventHandler(this.date_MouseEnter);
             this.date.MouseLeave += new System.EventHandler(this.date_MouseLeave);
             // 
@@ -249,5 +251,7 @@
         private Panel trashHover;
         private Panel plusHover;
         private Panel dateHover;
+        private MonthCalendar monthCalendar1;
+        private DateTimePicker dateTimePicker1;
     }
 }

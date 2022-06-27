@@ -5,6 +5,7 @@ namespace NotesReminder
 {
     public partial class MainForm : Form
     {
+        private Color[] colors = { Color.Green, Color.LightGreen, Color.Yellow, Color.Orange, Color.Red };
         public List<Note> notes = new List<Note>();
         
         public MainForm()
@@ -47,6 +48,8 @@ namespace NotesReminder
  
             note.StartPosition = FormStartPosition.Manual;
                 
+            note.initialDate = date.ToShortDateString();
+
             notes.Add(note);
             note.Show();
         }
@@ -71,6 +74,11 @@ namespace NotesReminder
                 note.Left = Int32.Parse($"{noteContent.left}");
                 note.Location = new Point(Int32.Parse($"{noteContent.left}"),
                     Int32.Parse($"{noteContent.top}"));
+                note.dateTimePicker.Value = DateTime.ParseExact($"{noteContent.date}", "dd/MM/yyyy", null);
+                note.initialDate = ($"{noteContent.initialDate}");
+
+                Color tempColor = calculateBgBasedOnDate($"{noteContent.date}", $"{noteContent.initialDate}");
+                note.BackColor = tempColor;
 
                 notes.Add(note);
                 note.Show();
@@ -101,6 +109,42 @@ namespace NotesReminder
             Show();
             this.WindowState = FormWindowState.Normal;
             notifyIcon1.Visible = false;
+        }
+
+        private Color calculateBgBasedOnDate(string dateAux, string inidateAux)
+        {
+            DateTime date = DateTime.ParseExact(dateAux, "dd/MM/yyyy", null);
+            DateTime inidate = DateTime.ParseExact(inidateAux, "dd/MM/yyyy", null);
+
+            int thresholdHelper = date.Subtract(inidate).Days;
+            int threshold = thresholdHelper / 5;
+
+            if (DateTime.Now > inidate && DateTime.Now < date)
+            {
+                int numDays = date.Subtract(DateTime.Now).Days;
+                if (numDays < threshold)
+                {
+                    return colors[4];
+                }else if(numDays <= threshold*2){
+                    return colors[3];
+                }
+                else if (numDays <= threshold *3)
+                {
+                    return colors[2];
+                }
+                else if (numDays <= threshold *4)
+                {
+                    return colors[1];
+                }
+                else
+                {
+                    return colors[0];
+                }
+            }
+            else
+            {
+                return Color.Black;
+            }
         }
 
     }

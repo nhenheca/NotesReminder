@@ -23,6 +23,8 @@ namespace NotesReminder
 
         public string Id;
 
+        public string initialDate;
+
         public DateTimePicker dateTimePicker;
         public MainForm dad;
 
@@ -32,25 +34,54 @@ namespace NotesReminder
             //EVENT
             this.FormClosing += new FormClosingEventHandler(form_close);
             //INI
-            dateTimePicker = new DateTimePicker();
+            InitializeDateTimePicker();
         }
-        
+        //DATETIMEPICKER
+        private void InitializeDateTimePicker()
+        {
+            dateTimePicker = new DateTimePicker();
+
+            // Set the MinDate and MaxDate.
+            dateTimePicker.MinDate = DateTime.Today;
+            dateTimePicker.MaxDate = new DateTime(2085, 6, 20);
+
+            // Set the CustomFormat string.
+            dateTimePicker.Format = DateTimePickerFormat.Short;
+            dateTimePicker.Location = new System.Drawing.Point(30, 5);
+            dateTimePicker.Size = new System.Drawing.Size(100, 20);
+            dateTimePicker.TabIndex = 0;
+
+            // Show the CheckBox and display the control as an up-down control
+            this.Controls.Add(dateTimePicker);
+
+            dateTimePicker.ValueChanged += new EventHandler(DateTimePicker_ValueChanged);
+        }
+        //CLOSE NOTE
         private void form_close(object sender, EventArgs e)
         {
             Form currentForm = Form.ActiveForm;
             currentForm.Hide();
         }
 
-        //APAGAR
-        private void trash_DoubleClick(object sender, EventArgs e){
-            string fileToRemove = this.Id;
-            fileToRemove = fileToRemove.Replace("/", "");
-            fileToRemove = fileToRemove.Replace(":", "");
-            fileToRemove = fileToRemove.Replace(" ", "");
-            string path = @"C:\NotesReminderData\" + fileToRemove + ".json";
+        //DELETE NOTE
+        private void trash_Click(object sender, EventArgs e)
+        {
+            DialogResult res = MessageBox.Show("Are you sure you want to DELETE the Note?", "Confirmation", MessageBoxButtons.OKCancel, MessageBoxIcon.Information);
+            if (res == DialogResult.OK)
+            {
+                string fileToRemove = this.Id;
+                fileToRemove = fileToRemove.Replace("/", "");
+                fileToRemove = fileToRemove.Replace(":", "");
+                fileToRemove = fileToRemove.Replace(" ", "");
+                string path = @"C:\NotesReminderData\" + fileToRemove + ".json";
 
-            File.Delete(path);
-            this.Close();
+                File.Delete(path);
+                this.Close();
+            }
+            if (res == DialogResult.Cancel)
+            {
+                //NA
+            }
         }
 
         //DRAG
@@ -90,7 +121,6 @@ namespace NotesReminder
         {
             noteSaveJson();
         }
-
         private async Task noteSaveJson()
         {
             noteText = richTextBoxNote.Text;
@@ -102,7 +132,9 @@ namespace NotesReminder
             noteContent.height = this.Height;
             noteContent.top = this.Top;
             noteContent.left = this.Left;
-            
+            noteContent.date = dateTimePicker.Value.ToShortDateString();
+            noteContent.initialDate = initialDate;
+
             string jsonString = JsonSerializer.Serialize(noteContent);
 
             var noteName = noteContent.id.Replace("/", "");
@@ -113,6 +145,7 @@ namespace NotesReminder
             File.WriteAllText(path, jsonString);
         }
 
+        
         //CSS
         //close
         private void close_MouseLeave(object sender, EventArgs e)
@@ -202,16 +235,19 @@ namespace NotesReminder
         }
 
         //EVENTS
+        private void DateTimePicker_ValueChanged(Object sender, EventArgs e)
+        {
+            noteSaveJson();
+            dateTimePicker.Visible = false;
+        }
         private void panelAdd_Click(object sender, EventArgs e)
         {
             this.dad.createNote();
         }
-
         private void Note_LocationChanged(object sender, EventArgs e)
         {
             noteSaveJson();
         }
-
         private void Note_SizeChanged(object sender, EventArgs e)
         {
             noteSaveJson();
@@ -219,5 +255,12 @@ namespace NotesReminder
 
         //GET E SET
         public string noteText { get; set; }
+
+        private void date_Click(object sender, EventArgs e)
+        {
+            dateTimePicker.BringToFront();
+            dateTimePicker.Show();
+            dateTimePicker.Show();
+        }
     }
 }
